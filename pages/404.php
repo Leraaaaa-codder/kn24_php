@@ -1,35 +1,34 @@
+<?php
+// Встановлюємо динамічний заголовок
+$pageTitle = "404 | Сторінку не знайдено";
+// Встановлюємо HTTP-код відповіді 404, щоб повідомити браузер і пошукові системи
+http_response_code(404);
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($title ?? 'Сторінка', ENT_QUOTES, 'UTF-8') ?></title>
-    <link rel="stylesheet" href="./styles/style.css">
-
-    <!-- Favicon базовий -->
-    <link rel="icon" href="./images/icons/favicon.ico" sizes="any">
-
-    <!-- PNG-іконки для браузерів -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicon-32x32.png">
-
-    <!-- Apple Touch Icon (для iOS / iPadOS) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./images/icons/apple-touch-icon.png">
-
-    <!-- Android / PWA -->
-    <link rel="manifest" href="./images/icons/site.webmanifest">
-
-    <!-- Тема і колір плитки для Windows -->
-    <meta name="theme-color" content="#ffffff">
-    <meta name="msapplication-TileColor" content="#ffffff">
+    
+    <title><?= htmlspecialchars($pageTitle ?? 'Помилка', ENT_QUOTES, 'UTF-8') ?></title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DK+Loopet:wght@100..400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/styles/normalize.css"> 
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
 
-<?php
-    include 'nav.php'
-?>
+    <?php include 'nav.php'; ?> 
 
-    <h1>СТОРІНКУ НЕ ЗНАЙДЕНО. Файл /pages/404.php</h1>    
-    <a href="/">Повернутись на головну</a>
+    <div class="error-container">
+        <div class="site-title">HistoryTube</div>
+        <div class="error-code">404</div>
+        <div class="error-message">На жаль, сторінку не знайдено :(</div>
+        
+        <a href="/" class="btn-primary">
+            Повернутися на головну
+        </a>
+    </div>
 </body>
 </html>
