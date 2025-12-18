@@ -9,6 +9,14 @@
     },
     "require": {
         "pecee/simple-router": "^5.4",
-        "latte/latte": "^3.0"
+        "latte/latte": "^3.0",
+        "monolog/monolog": "^2.9",
+        "symfony/var-dumper": "^6.4",
+        "nesbot/carbon": "^3.11"
+    },
+    "config": {
+        "platform": {
+            "php": "8.2.12"
+        }
     }
 }

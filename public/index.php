@@ -1,47 +1,18 @@
 <?php
-    require __DIR__ .'/../vendor/autoload.php';
 
-    session_start();
-          
-    // маршрутизатор
-    use Pecee\SimpleRouter\SimpleRouter;
-    use Pecee\Http\Request;
-    use Pecee\SimpleRouter\Exceptions\NotFoundHttpException;
+require __DIR__ . '/../vendor/autoload.php';
 
-    use Classes\HomePageController;
-    use Classes\ErrorController;
-    use Classes\LoginController;
-    use Classes\AuthController;
-    use Classes\GameController;
-    use Classes\RegController;
+use Carbon\Carbon;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
-    // прописуємо маршрути
-    SimpleRouter::get('/', [HomePageController::class, 'show']);
-    
-    SimpleRouter::get('/login', [LoginController::class, 'show']);
+// ---------- MONOLOG ----------
+$log = new Logger('app');
+$log->pushHandler(new StreamHandler(__DIR__ . '/../app.log', Logger::INFO));
+$log->info('Проєкт запущено');
 
-    SimpleRouter::get('/reg', [RegController::class, 'show']);
-    
-    SimpleRouter::get('/logout', [AuthController::class, 'logout']);
-    SimpleRouter::post('/login', [AuthController::class, 'login']);
-    SimpleRouter::post('/reg', [AuthController::class, 'reg']);
-    
-    // робимо нову сторінку
-    SimpleRouter::get('/game', [GameController::class, 'show']);
-    SimpleRouter::post('/game', [GameController::class, 'addToDatabase']);
+// ---------- VAR DUMPER ----------
+dump('VarDumper працює');
 
-    // --- обробка помилок ---
-
-    SimpleRouter::error(function(Request $r, \Exception $e) {
-        if ($e instanceof NotFoundHttpException) {
-            ErrorController::show404();
-        } elseif ($e->getCode() === 403) {
-            ErrorController::show403($e);
-        } else {
-            ErrorController::show500($e);
-        }
-        exit;
-    });
-
-     // Запуск маршрутизатора
-    SimpleRouter::start();
+// ---------- ЦІКАВИЙ ПАКЕТ (CARBON) ----------
+echo "Сьогодні: " . Carbon::now()->toDateString();
