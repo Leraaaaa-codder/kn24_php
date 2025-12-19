@@ -1,0 +1,26 @@
+{extends '@layout.latte'}
+
+{block content}
+<div style="padding: 50px; font-family: sans-serif; line-height: 1.6;">
+    <h1 style="color: #007bff;">{$title}</h1>
+    <hr>
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border: 1px solid #ddd;">
+        <h2>Привіт! Я {$fullName} ☀️</h2>
+        <p style="font-style: italic; color: #555;">{$description}</p>
+        
+        <h3>Мої навички:</h3>
+        <ul>
+            {foreach $skills as $skill}
+                <li>{$skill}</li>
+            {/foreach}
+        </ul>
+
+        <h3>Зв'язок:</h3>
+        {foreach $socials as $name => $url}
+            <a href="{$url}" style="margin-right: 15px; text-decoration: none; font-weight: bold;">{$name}</a>
+        {/foreach}
+    </div>
+    <br>
+    <a href="/">← На головну</a>
+</div>
+{/block}
