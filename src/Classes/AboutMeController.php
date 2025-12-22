@@ -16,7 +16,7 @@ class AboutMeController
     public static function showAboutPage(): void
     {
         // Спроба отримати дані з бази даних
-        $userFromDb = Database::findUser('Leraaaaaa-codder');
+        
 
         $data = [
             'title'       => 'Про мене | KN24 Project',

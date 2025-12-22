@@ -2,7 +2,8 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>{$title ?? 'Мій сайт'}</title>
+   <title>{($title ?? 'Мій сайт')|escape}</title>
+
     <link rel="stylesheet" href="./styles/style.css">
 
     <!-- Favicon базовий -->

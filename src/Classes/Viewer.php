@@ -25,7 +25,6 @@ class Viewer {
         
         // Додаємо до параметрів user (якщо є в сесії) та CSRF токен для захисту форм
         $param['user'] = $_SESSION['login'] ?? null;
-        $param['csrf_token'] = AuthController::generateCsrfToken();
 
         $param['error'] = $_SESSION['login_error'] ?? null;
         unset($_SESSION['login_error']); // Видаляємо повідомлення після відображення
